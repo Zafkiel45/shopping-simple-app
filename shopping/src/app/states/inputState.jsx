@@ -5,5 +5,6 @@ export const sliceInputState = ((set, get) => ({
     updateListOfItens: (state) => set((currentState) => ({
         listOfItens: [...currentState.listOfItens, {name: state}], 
         item: ''
-    }))
+    })),
+    updateItemDelete: () => set(() => ({listOfItens: []}))
 }))
