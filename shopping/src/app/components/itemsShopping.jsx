@@ -11,7 +11,7 @@ export const ItemsShopping = () => {
                 {items.map((element, index) => {
                     return (
                         <>
-                            <li key={Math.random()} className={`w-[90%] bg-gray-100 border border-gray-200 shadow-md rounded-md px-4 py-2`} >
+                            <li key={element.name} className={`w-[90%] bg-gray-100 border border-gray-200 shadow-md rounded-md px-4 py-2`} >
                                 {element.name}
                             </li>
                         </>
