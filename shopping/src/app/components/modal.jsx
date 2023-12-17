@@ -47,6 +47,5 @@ export const Modal = () => {
                 </button>
             </div>
         </div>
-
     )
 }

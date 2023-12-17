@@ -7,7 +7,7 @@ export const ItemsShopping = () => {
 
     return (
         <div>
-            <ol className={`w-screen border-t flex gap-2 flex-col items-center border-t-gray-200 pt-4 px-2 pb-2`}>
+            <ol className={`w-screen border-t flex gap-2 overflow-scroll h-full flex-col items-center border-t-gray-200 pt-4 px-2 pb-2`}>
                 {items.map((element, index) => {
                     return (
                         <>

@@ -6,13 +6,22 @@ export const Inputs = () => {
     // states
     const nameInput = useStore((state) => state.item);
     const updateInput = useStore((state) => state.updateItem);
-    const updateListShopping = useStore((state) => state.updateListOfItens);
     const updateItemDelete = useStore((state) => state.updateItemDelete);
     const modalSet = useStore((state) => state.updateModal);
+    const listOfItems = useStore((state) => state.listOfItens)
     // functions
     const KeyPressFunction = (button) => {
+
+        let findName = listOfItems.find((item) => {
+            return item.name === nameInput
+        })
+
         if(button.key === "Enter") {
-            updateListShopping(nameInput);
+            if(nameInput === '' || nameInput.length < 4 || findName !== undefined) {
+                 window.alert("[ERRO] - Nome do produto vazio, tem menos que 4 caracteres ou o nome já existe")
+            } else {
+                modalSet(true)
+            }
         }
     };
 
