@@ -8,15 +8,12 @@ export const Modal = () => {
     const updateList = useStore((state) => state.updateListOfItens)
     const nameItem   = useStore((state) => state.item)
     const updateModal = useStore((state) => state.updateModal);
+    const updateCheck = useStore((state) => state.updateCheck)
     // functions
-    const updateListValid = () => {
-        if(nameItem === '' || nameItem.length < 4) {
-            window.alert("[ERRO] - Nome do produto vazio ou tem menos que 4 caracteres")
-        } else {
-            updateList(nameItem)
-        }
+    function addItemShopping() {
+        updateCheck(updateList, nameItem)
+        updateModal(false)
     }
-
     return (
         <div className={`${modalState ? 'flex':'hidden'} flex flex-col items-center gap-4 z-20 absolute top-0 left-0 w-screen h-screen bg-gray-100 `}>
             <div className="flex py-3 justify-between w-full bg-black shadow-md text-white px-2">
@@ -42,7 +39,7 @@ export const Modal = () => {
                 <input type="number" id="price" className="w-full py-1 px-3 rounded-lg shadow-sm border border-gray-200 outline-none placeholder:text-gray-300" />
             </div>
             <div className="w-full text-white font-medium flex justify-center items-center">
-                <button onClick={updateListValid} className="w-fit h-fit px-5 py-2 bg-black shadow-sm rounded-md cursor-pointer outline-none">
+                <button onClick={addItemShopping} className="w-fit h-fit px-5 py-2 bg-black shadow-sm rounded-md cursor-pointer outline-none">
                     Adicionar
                 </button>
             </div>
