@@ -2,17 +2,25 @@
 import { useStore } from "../states/mainState"
 
 export const Modal = () => {
-
     // states
-    const modalState = useStore((state) => state.modalState)
-    const updateList = useStore((state) => state.updateListOfItens)
-    const nameItem   = useStore((state) => state.item)
+    const modalState = useStore((state) => state.modalState);
+    const updateList = useStore((state) => state.updateListOfItens);
+    const nameItem   = useStore((state) => state.item);
     const updateModal = useStore((state) => state.updateModal);
-    const updateCheck = useStore((state) => state.updateCheck)
+    const updateCheck = useStore((state) => state.updateCheck);
+    const updateAmout = useStore((state) => state.updateAmout);
+    const updatePrince = useStore((state) => state.updadePrince);
+    const prince = useStore((state) => state.prince);
+    const amout = useStore((state) => state.amout)
+
     // functions
     function addItemShopping() {
-        updateCheck(updateList, nameItem)
-        updateModal(false)
+        if(prince <= 0 || amout <= 0) {
+            window.alert('[Erro] - insira um preço e quantidade')
+        } else {
+            updateCheck(updateList, nameItem)
+            updateModal(false)
+        }
     }
     return (
         <div className={`${modalState ? 'flex':'hidden'} flex flex-col items-center gap-4 z-20 absolute top-0 left-0 w-screen h-screen bg-gray-100 `}>
@@ -34,9 +42,9 @@ export const Modal = () => {
             </div>
             <div className="flex flex-col w-4/5 gap-2">
                 <label htmlFor="amout" className="text-sm font-bold italic">Quantidade</label>
-                <input type="number" name="" id="amount" className="w-full py-1 px-3 rounded-lg shadow-sm border border-gray-200 outline-none placeholder:text-gray-300" />
+                <input onChange={(e) => updateAmout(e.target.value)} value={amout} type="number" name="" id="amount" className="w-full py-1 px-3 rounded-lg shadow-sm border border-gray-200 outline-none placeholder:text-gray-300" />
                 <label htmlFor="price" className="text-sm font-bold italic">Preço</label>
-                <input type="number" id="price" className="w-full py-1 px-3 rounded-lg shadow-sm border border-gray-200 outline-none placeholder:text-gray-300" />
+                <input onChange={(e) => updatePrince(e.target.value)} value={prince} type="number" id="price" className="w-full py-1 px-3 rounded-lg shadow-sm border border-gray-200 outline-none placeholder:text-gray-300" />
             </div>
             <div className="w-full text-white font-medium flex justify-center items-center">
                 <button onClick={addItemShopping} className="w-fit h-fit px-5 py-2 bg-black shadow-sm rounded-md cursor-pointer outline-none">

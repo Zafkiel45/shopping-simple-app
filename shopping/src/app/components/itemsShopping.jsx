@@ -11,8 +11,11 @@ export const ItemsShopping = () => {
                 {items.map((element, index) => {
                     return (
                         <>
-                            <li key={element.name} className={`w-[90%] bg-gray-100 border border-gray-200 shadow-md rounded-md px-4 py-2`} >
+                            <li key={element.name} className={`w-[90%] flex justify-between bg-gray-100 border border-gray-200 shadow-md rounded-md px-4 py-2`} >
                                 {element.name}
+                                <div key={element.name} className="w-fit text-sm h-fit font-medium text-blue-400">
+                                    Quant: {element.amout}
+                                </div>
                             </li>
                         </>
                     )
