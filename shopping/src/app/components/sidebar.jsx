@@ -11,7 +11,7 @@ export const SideBar = () => {
         <nav className={`w-[70vw] absolute py-5 top-0 right-0 shadow-md bg-gray-100 h-screen ${navBarControl ? 'flex':'hidden'} ${navBarControl ? 'overflow-hidden': 'overflow-y-scroll'}`}>
             <ol className="w-full flex flex-col gap-3 items-center text-white font-medium">
                 <li key={'key_unique_1'} onClick={() => updateNavBarControl(false)} className={`bg-black text-center rounded-sm shadow-sm w-4/5 px-4 py-2`} >X</li>
-                <Link className={`bg-black rounded-sm shadow-sm w-4/5 px-4 py-2`} href={'/calc'}>
+                <Link onClick={() => updateNavBarControl(false)} className={`bg-black rounded-sm shadow-sm w-4/5 px-4 py-2`} href={'/calc'}>
                     <li key={'key_unique_2'} >Calcular</li>
                 </Link>
             </ol>

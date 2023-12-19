@@ -5,9 +5,3 @@ export default function Calc({children}) {
         </>
     )
 }
-
-export const staticParamsMetadata = async () => {
-    return ({
-        title: 'calc'
-    })
-}
