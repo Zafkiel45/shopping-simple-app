@@ -17,8 +17,12 @@ export const sliceInputState = ((set, get) => ({
             return 0;
         }
     },
-    updateMoney: (state) => set(() => ({money: parseFloat(state).toFixed(2)})),
-    updateTotal: () => set((currentState) => ({total: currentState.money - ''})),
+    updateMoney: (state) => {
+        if(state.length <= 15) {
+            set(() => ({money: parseFloat(state).toFixed(2)}))
+        } 
+    },
+    updateTotal: (money, totalPrince) => set(() => ({total: Number(parseFloat(money - totalPrince))})),
     updateItem: (state) => set(() => ({item: state})),
     updateModal: (state) => set(() => ({modalState: state})),
     updateListOfItens: (state) => set((currentState) => ({
